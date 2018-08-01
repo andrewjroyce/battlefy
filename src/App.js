@@ -12,15 +12,11 @@ import store from './redux/store';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      // light: will be calculated from palette.primary.main,
       main: '#4ABDAC',
-      // dark: will be calculated from palette.primary.main,
-      // contrastText: will be calculated to contast with palette.primary.main
     },
     secondary: {
       light: '#0066ff',
       main: '#FC4A1A',
-      // dark: will be calculated from palette.secondary.main,
       contrastText: '#ffcc00',
     },
     status: {
@@ -30,17 +26,12 @@ const theme = createMuiTheme({
       default: "#DFDCE3"
     },
     typography: {
-      // Use the system font instead of the default Roboto font.
       fontFamily: [
         'Roboto',
       ].join(','),
     },
   }
-  });
-
-
-
- 
+});
 
 function TabContainer(props) {
   return (
@@ -57,25 +48,13 @@ TabContainer.propTypes = {
 class App extends Component {
   state = {
     value: 0,
-    spacing: '16',
   };
-
-  handleChange = (event, value) => {
-    this.setState({ value });
-  };
-
-renderRightSide(){
-  return(
-    <Typography variant="subheading">KDA</Typography>
-  )
-}
-
 
   render() {
     return (
       <Provider store={store}>
         <Main />
-    </Provider>
+      </Provider>
     );
   }
 }

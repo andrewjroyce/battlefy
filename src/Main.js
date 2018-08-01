@@ -44,55 +44,14 @@ const theme = createMuiTheme({
   });
 
 const styles = {
-
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
   title: {
     marginBottom: 16,
     fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-  row: {
-    display: 'flex',
-    justifyContent: 'center',
   },
   root: {
     flexGrow: 1,
     backgroundColor: "#fff",
   },
-  image: {
-    width: 128,
-    height: 128,
-  },
-  paper: {
-    display: "flex",
-    flex: 1
-  },
-  control: {
-    padding: 2 * 2,
-  },
-gridCenter: {
-  display: "flex", 
-  alignItems: "center"
-}
-
-};
-
-function TabContainer(props) {
-  return (
-    <Typography component="div" style={{ padding: 8 * 3 }}>
-      {props.children}
-    </Typography>
-  );
-}
-
-TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 class Main extends Component {
@@ -104,42 +63,38 @@ class Main extends Component {
     this.setState({ value });
   };
 
-
-
   render() {
-console.log(this.props.reduxState)
     const { value } = this.state;
     return (
       <div className="App">
         <header  className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title"> - </h1>
+          <h1 className="App-title"> Andrew Royce LoL Starter Stat </h1>
         </header>
         <MuiThemeProvider theme={theme}>
         <div className="App-intro">
-        <Paper style={styles.root}>
-          <AppBar color="primary" position="static">
-            <Tabs fullWidth value={value} onChange={this.handleChange}>
-              <Tab label="Latest Game" />
-              <Tab label="Lifetime Stats" />
-              <Tab label="Background" href="#basic-tabs" />
-            </Tabs>
-          </AppBar>
-          <div style={{display: "flex", flex: 1,}}>
-            <ClippedDrawer />
-            <div style={{width: "100%"}}>
-              <PlayerCard match={this.props.reduxState.MatchInfo.info} stats={this.props.reduxState.LastMatch.last} title={this.props.reduxState.Title.title} value={this.state.value}/>
-              <button onClick={() => this.props.fetchPosts(this.props.reduxState.Title.title)} />
-
-           </div>
-          </div>
-        </Paper>
-      </div>
+          <Paper style={styles.root}>
+            <AppBar color="primary" position="static">
+              <Tabs fullWidth value={value} onChange={this.handleChange}>
+                <Tab label="Latest Game" />
+                <Tab label="Previous Game" />
+                <Tab label="Lifetime Stats" />
+                <Tab label="Ligma" href="#basic-tabs" />
+              </Tabs>
+            </AppBar>
+            <div style={{display: "flex", flex: 1,}}>
+              <ClippedDrawer />
+              <div style={{width: "100%"}}>
+                <PlayerCard match={this.props.reduxState.MatchInfo.info} stats={this.props.reduxState.LastMatch.last} title={this.props.reduxState.Title.title} value={this.state.value}/>
+              </div>
+            </div>
+          </Paper>
+        </div>
       </MuiThemeProvider >
     </div>
     );
   }
 }
+
 const mapStateToProps = state => ({
   reduxState: state
 })

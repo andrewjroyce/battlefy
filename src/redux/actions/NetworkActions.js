@@ -34,7 +34,6 @@ function receivePosts(data) {
   return {
     type: RECEIVE_ITEMS,
     data,
-    // items: json.data.children.map(child => child.data),
     receivedAt: Date.now()
   }
 }
@@ -51,7 +50,6 @@ function receiveProfile(data) {
   return {
     type: RECEIVE_PROFILE,
     data,
-    // items: json.data.children.map(child => child.data),
     receivedAt: Date.now()
   }
 }
@@ -61,7 +59,6 @@ function receiveLastMatch(data) {
   return {
     type: RECIEVE_LAST_MATCH,
     data,
-    // items: json.data.children.map(child => child.data),
     receivedAt: Date.now()
   }
 }
@@ -71,7 +68,6 @@ function receiveLastMatchInfo(data) {
   return {
     type: RECIEVE_LAST_MATCH_INFO,
     data,
-    // items: json.data.children.map(child => child.data),
     receivedAt: Date.now()
   }
 }
@@ -80,46 +76,39 @@ function receiveLastMatchStats(data) {
   return {
     type: RECIEVE_LAST_MATCH,
     data,
-    // items: json.data.children.map(child => child.data),
     receivedAt: Date.now()
   }
 }
 
-// Meet our first thunk action creator!
-// Though its insides are different, you would use it just like any other action creator:
-// store.dispatch(fetchPosts('reactjs'))
 export function fetchPosts(item) {
   return function (dispatch) { 
     dispatch(requestPosts(item))
 
     const baseAPIURL = 'https://na1.api.riotgames.com/'
-    const apiKey = "RGAPI-de2f4040-7b03-4737-bdec-c6894c2aa7fc";
+    const apiKey = "RGAPI-7007356d-18e1-44a0-b2a8-b3e313768c5f";
     const championsEndPoint = `/lol/summoner/v3/summoners/by-name/${item}`;
     const baseEnd = '?api_key=' + apiKey;
 
     return axios({
-         method: "GET",
-         baseURL: baseAPIURL,
-         url: championsEndPoint + baseEnd,
-         responseType:"json",
-         headers:{
-          'crossDomain' : 'true',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
-          //  "Content-Type": "application/json",
-           'Content-Type': 'text/plain',
-           "Accept": "application/json",
-           "X-Custom-Header": "Get player"}
-       })
-      .then(
-        response => dispatch(receivePosts(response.data)),
-        error => console.log('An error occurred.', error)
-      )
+      method: "GET",
+      baseURL: baseAPIURL,
+      url: championsEndPoint + baseEnd,
+      responseType:"json",
+      headers:{
+      'crossDomain' : 'true',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+        'Content-Type': 'text/plain',
+        "Accept": "application/json",
+        "X-Custom-Header": "Get player"}
+    })
+    .then(
+      response => dispatch(receivePosts(response.data)),
+      error => console.log('An error occurred.', error)
+    )
       .then(res => dispatch(getProfile(res.data.accountId, res.data.id)),
-        // We can dispatch many times!
-        // Here, we update the app state with the results of the API call.
-      )
+    )
   }
 }
 
@@ -128,121 +117,66 @@ export function getProfile(item, lore) {
     dispatch(requestProfile(item))
 
     const baseAPIURL = 'https://na1.api.riotgames.com/'
-    const apiKey = "RGAPI-de2f4040-7b03-4737-bdec-c6894c2aa7fc";
+    const apiKey = "RGAPI-7007356d-18e1-44a0-b2a8-b3e313768c5f";
     const matchEndPoint = `/lol/match/v3/matchlists/by-account/${item}`;
     const baseEnd = '?api_key=' + apiKey;
 
     return axios({
-         method: "GET",
-         baseURL: baseAPIURL,
-         url: matchEndPoint + baseEnd,
-         responseType:"json",
-         headers:{
-          'crossDomain' : 'true',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
-          //  "Content-Type": "application/json",
-           'Content-Type': 'text/plain',
-           "Accept": "application/json",
-           "X-Custom-Header": "Get player"}
-       })
-      .then(
-        response => dispatch(receiveProfile(response.data)),
-        error => console.log('An error occurred.', error)
-      )
-      .then(res => dispatch(getMatch(res.data.matches[0].gameId, lore))
-      
-        // We can dispatch many times!
-        // Here, we update the app state with the results of the API call.
-       
-      )
+      method: "GET",
+      baseURL: baseAPIURL,
+      url: matchEndPoint + baseEnd,
+      responseType:"json",
+      headers:{
+      'crossDomain' : 'true',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+      'Content-Type': 'text/plain',
+      "Accept": "application/json",
+      "X-Custom-Header": "Get player"}
+    })
+    .then(
+      response => dispatch(receiveProfile(response.data)),
+      error => console.log('An error occurred.', error)
+    )
+    .then(res => dispatch(getMatch(res.data.matches[0].gameId, lore)))
   }
 }
 
 
 export function getMatch(match, lore) {
-  console.log(lore)
-
   return function (dispatch) { 
     dispatch(requestLastMatch(match))
     const baseAPIURL = 'https://na1.api.riotgames.com/'
-    const apiKey = "RGAPI-de2f4040-7b03-4737-bdec-c6894c2aa7fc";
+    const apiKey = "RGAPI-7007356d-18e1-44a0-b2a8-b3e313768c5f";
     const matchEndPoint = `/lol/match/v3/matches/${match}`;
     const baseEnd = '?api_key=' + apiKey;
 
     return axios({
-         method: "GET",
-         baseURL: baseAPIURL,
-         url: matchEndPoint + baseEnd,
-         responseType:"json",
-         headers:{
-          'crossDomain' : 'true',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
-          //  "Content-Type": "application/json",
-           'Content-Type': 'text/plain',
-           "Accept": "application/json",
-           "X-Custom-Header": "Get player"}
-       })
-      .then(
-        response => {
-          response.data.participantIdentities.forEach((particpantID, playerID) => {
-            if(particpantID.player.summonerId === lore ){
-              let User = playerID
-              dispatch(receiveLastMatch(response.data.participants[User]))
-             // dispatch(getLastMatchStats(playerID))
+      method: "GET",
+      baseURL: baseAPIURL,
+      url: matchEndPoint + baseEnd,
+      responseType:"json",
+      headers:{
+      'crossDomain' : 'true',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+        'Content-Type': 'text/plain',
+        "Accept": "application/json",
+        "X-Custom-Header": "Get player"}
+    })
+    .then(
+      response => {
+        response.data.participantIdentities.forEach((particpantID, playerID) => {
+          if(particpantID.player.summonerId === lore ){
+            let User = playerID
+            dispatch(receiveLastMatch(response.data.participants[User]))
             }
-          }  
-        );
+        });
         dispatch(receiveLastMatchInfo(response.data))
       },
-        error => console.log('An error occurred.', error)
-      )
-  }
-}
-
-export function getLastMatchStats(player) {
-  return function (dispatch) { 
-    dispatch(requestLastMatchStats(player))
-    const baseAPIURL = 'https://na1.api.riotgames.com/'
-    const apiKey = "RGAPI-de2f4040-7b03-4737-bdec-c6894c2aa7fc";
-    const matchEndPoint = `/lol/match/v3/matches/${player}`;
-    const baseEnd = '?api_key=' + apiKey;
-
-    return axios({
-         method: "GET",
-         baseURL: baseAPIURL,
-         url: matchEndPoint + baseEnd,
-         responseType:"json",
-         headers:{
-          'crossDomain' : 'true',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
-          //  "Content-Type": "application/json",
-           'Content-Type': 'text/plain',
-           "Accept": "application/json",
-           "X-Custom-Header": "Get player"}
-       })
-      .then(
-        response => dispatch(receiveLastMatchStats(response.data)),
-        error => console.log('An error occurred.', error)
-      )
-      .then(res => {
-      //   res.data.participantIdentities.forEach((particpantID, playerID) => {
-      //     if(particpantID.player.summonerId === lore ){
-      //       dispatch(getPlayerID(playerID))
-      //     }
-      //   }  
-      // )
-    }
-        // We can dispatch many times!
-        // Here, we update the app state with the results of the API call.
-        // const info = data.participantIdentities.forEach((particpantID) => {
-        //   console.log(particpantID.player.summonerName)
-        // })
-      )
+      error => console.log('An error occurred.', error)
+    )
   }
 }
