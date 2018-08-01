@@ -24,7 +24,7 @@ const styles = theme => ({
 });
 
 const baseAPIURL = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/'
-const apiKey = "RGAPI-7007356d-18e1-44a0-b2a8-b3e313768c5f"
+const apiKey = "RGAPI-7e072959-8ce9-4e58-be2c-408ee7c43651"
 const itemEndPoint = '/lol/static-data/v3/items/'
 const baseEnd = '?api_key=' + apiKey
     
@@ -53,7 +53,6 @@ class LowerPanel extends React.Component {
       }
     })
     .then((response) => {
-      console.log(Ind)
         this.setState({Ind: response.data.name}) 
     })
     .catch(function (error) {

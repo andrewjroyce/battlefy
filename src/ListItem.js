@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 
 const baseAPIURL = 'https://cors-anywhere.herokuapp.com//https://na1.api.riotgames.com/'
-const apiKey = "RGAPI-7007356d-18e1-44a0-b2a8-b3e313768c5f"
+const apiKey = "RGAPI-7e072959-8ce9-4e58-be2c-408ee7c43651"
 const championsEndPoint = '/lol/static-data/v3/champions/'
 const baseEnd = '?api_key=' + apiKey
 
@@ -14,6 +14,7 @@ state ={
 }
 
 urlCall = (Champ) => { 
+    let Pro = Champ;  
     axios({
     method: "GET",
     baseURL: baseAPIURL,
@@ -31,8 +32,8 @@ urlCall = (Champ) => {
     .then((response) =>{
         this.setState({champ: response.data.name}) 
     })
-    .catch(function (error) {
-        console.log(error)
+    .catch((error)=>{
+        this.setState({champ: Pro})
     })
 };
 

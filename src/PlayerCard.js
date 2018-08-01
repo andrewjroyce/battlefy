@@ -38,69 +38,6 @@ class PlayerCard extends Component {
   };
   
 
-fetchUser(){
-  const apiKey = "RGAPI-7007356d-18e1-44a0-b2a8-b3e313768c5f"
-  const baseAPIURL = 'https://cryptic-headland-94862.herokuapp.com/https://na1.api.riotgames.com'
-  const championsEndPoint = '/lol/match/v3/matchlists/by-account/78294'
-  const baseEnd = '?api_key=' + apiKey
-  
-  const urlCall = () => { 
-    axios({
-        method: "GET",
-        baseURL: baseAPIURL,
-        url: championsEndPoint + baseEnd,
-        responseType:"json",
-        headers:{
-        'crossDomain' : 'true',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-        'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
-          'Content-Type': 'text/plain',
-          "Accept": "application/json",
-          "X-Custom-Header": "Get player"}
-    })
-    .then((response) =>{
-      console.log(response)
-    })
-    .catch(function (error) {
-      console.log(error)
-      })
-    };
-  urlCall()
-}
-
-fetchPositionSummoner(){
-  const apiKey = "RGAPI-7007356d-18e1-44a0-b2a8-b3e313768c5f"
-  const baseAPIURL = 'https://cryptic-headland-94862.herokuapp.com/https://na1.api.riotgames.com'
-  const championsEndPoint = '/lol/league/v3/positions/by-summoner/78294'
-  const baseEnd = '?api_key=' + apiKey
-  
-  const urlCall = () => { 
-    axios({
-      method: "GET",
-      baseURL: baseAPIURL,
-      url: championsEndPoint + baseEnd,
-      responseType:"json",
-      headers:{
-      'crossDomain' : 'true',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
-      //  "Content-Type": "application/json",
-        'Content-Type': 'text/plain',
-        "Accept": "application/json",
-        "X-Custom-Header": "Get player"}
-      })
-    .then((response) =>{
-      console.log(response)
-    })
-    .catch(function (error) {
-      console.log(error)
-    })
-  };
-  urlCall()
-}
-  
 renderGameArea(){
   return (
     this.props.value ===2 ? 
