@@ -84,7 +84,7 @@ export function fetchPosts(item) {
   return function (dispatch) { 
     dispatch(requestPosts(item))
 
-    const baseAPIURL = 'https://na1.api.riotgames.com/'
+    const baseAPIURL = 'https://cryptic-headland-94862.herokuapp.com/https://na1.api.riotgames.com/'
     const apiKey = "RGAPI-7007356d-18e1-44a0-b2a8-b3e313768c5f";
     const championsEndPoint = `/lol/summoner/v3/summoners/by-name/${item}`;
     const baseEnd = '?api_key=' + apiKey;
@@ -116,7 +116,7 @@ export function getProfile(item, lore) {
   return function (dispatch) { 
     dispatch(requestProfile(item))
 
-    const baseAPIURL = 'https://na1.api.riotgames.com/'
+    const baseAPIURL = 'https://cryptic-headland-94862.herokuapp.com/https://na1.api.riotgames.com/'
     const apiKey = "RGAPI-7007356d-18e1-44a0-b2a8-b3e313768c5f";
     const matchEndPoint = `/lol/match/v3/matchlists/by-account/${item}`;
     const baseEnd = '?api_key=' + apiKey;
@@ -147,7 +147,7 @@ export function getProfile(item, lore) {
 export function getMatch(match, lore) {
   return function (dispatch) { 
     dispatch(requestLastMatch(match))
-    const baseAPIURL = 'https://na1.api.riotgames.com/'
+    const baseAPIURL = 'https://cryptic-headland-94862.herokuapp.com/https://na1.api.riotgames.com/'
     const apiKey = "RGAPI-7007356d-18e1-44a0-b2a8-b3e313768c5f";
     const matchEndPoint = `/lol/match/v3/matches/${match}`;
     const baseEnd = '?api_key=' + apiKey;
