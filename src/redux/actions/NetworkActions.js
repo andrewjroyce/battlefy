@@ -30,7 +30,6 @@ function requestLastMatchStats(item) {
 }
 
 function receivePosts(data) {
-  console.log(data)
   return {
     type: RECEIVE_ITEMS,
     data,
@@ -46,7 +45,6 @@ export function invalidateItems(item) {
 }
 
 function receiveProfile(data) {
-  console.log(data)
   return {
     type: RECEIVE_PROFILE,
     data,
@@ -55,7 +53,6 @@ function receiveProfile(data) {
 }
 
 function receiveLastMatch(data) {
-  console.log(data)
   return {
     type: RECIEVE_LAST_MATCH,
     data,
@@ -64,7 +61,6 @@ function receiveLastMatch(data) {
 }
 
 function receiveLastMatchInfo(data) {
-  console.log(data)
   return {
     type: RECIEVE_LAST_MATCH_INFO,
     data,
