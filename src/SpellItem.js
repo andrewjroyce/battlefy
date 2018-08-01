@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 
-const baseAPIURL = 'https://cryptic-headland-94862.herokuapp.com/https://na1.api.riotgames.com/'
+const baseAPIURL = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/'
 const apiKey = "RGAPI-7007356d-18e1-44a0-b2a8-b3e313768c5f"
 const championsEndPoint = '/lol/static-data/v3/summoner-spells/'
 const baseEnd = '?api_key=' + apiKey
