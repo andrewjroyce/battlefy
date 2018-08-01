@@ -78,7 +78,7 @@ class PlayerCard extends Component {
 
   fetchUser(){
     const apiKey = "RGAPI-de2f4040-7b03-4737-bdec-c6894c2aa7fc"
-    const baseAPIURL = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com'
+    const baseAPIURL = 'https://na1.api.riotgames.com'
     const championsEndPoint = '/lol/match/v3/matchlists/by-account/78294'
     const baseEnd = '?api_key=' + apiKey
     
@@ -123,7 +123,7 @@ class PlayerCard extends Component {
 
   fetchPositionSummoner(){
     const apiKey = "RGAPI-de2f4040-7b03-4737-bdec-c6894c2aa7fc"
-    const baseAPIURL = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com'
+    const baseAPIURL = 'https://na1.api.riotgames.com'
     const championsEndPoint = '/lol/league/v3/positions/by-summoner/78294'
     const baseEnd = '?api_key=' + apiKey
     

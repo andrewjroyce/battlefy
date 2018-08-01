@@ -92,7 +92,7 @@ export function fetchPosts(item) {
   return function (dispatch) { 
     dispatch(requestPosts(item))
 
-    const baseAPIURL = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/'
+    const baseAPIURL = 'https://na1.api.riotgames.com/'
     const apiKey = "RGAPI-de2f4040-7b03-4737-bdec-c6894c2aa7fc";
     const championsEndPoint = `/lol/summoner/v3/summoners/by-name/${item}`;
     const baseEnd = '?api_key=' + apiKey;
@@ -127,7 +127,7 @@ export function getProfile(item, lore) {
   return function (dispatch) { 
     dispatch(requestProfile(item))
 
-    const baseAPIURL = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/'
+    const baseAPIURL = 'https://na1.api.riotgames.com/'
     const apiKey = "RGAPI-de2f4040-7b03-4737-bdec-c6894c2aa7fc";
     const matchEndPoint = `/lol/match/v3/matchlists/by-account/${item}`;
     const baseEnd = '?api_key=' + apiKey;
@@ -166,7 +166,7 @@ export function getMatch(match, lore) {
 
   return function (dispatch) { 
     dispatch(requestLastMatch(match))
-    const baseAPIURL = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/'
+    const baseAPIURL = 'https://na1.api.riotgames.com/'
     const apiKey = "RGAPI-de2f4040-7b03-4737-bdec-c6894c2aa7fc";
     const matchEndPoint = `/lol/match/v3/matches/${match}`;
     const baseEnd = '?api_key=' + apiKey;
@@ -206,7 +206,7 @@ export function getMatch(match, lore) {
 export function getLastMatchStats(player) {
   return function (dispatch) { 
     dispatch(requestLastMatchStats(player))
-    const baseAPIURL = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/'
+    const baseAPIURL = 'https://na1.api.riotgames.com/'
     const apiKey = "RGAPI-de2f4040-7b03-4737-bdec-c6894c2aa7fc";
     const matchEndPoint = `/lol/match/v3/matches/${player}`;
     const baseEnd = '?api_key=' + apiKey;
